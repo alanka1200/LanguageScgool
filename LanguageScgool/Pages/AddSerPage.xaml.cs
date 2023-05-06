@@ -57,6 +57,7 @@ namespace LanguageScgool.Pages
                 clientService1.StartTime = DateTime.Parse(times);
                 App.db.ClientService.Add(clientService1);
 
+
                 App.db.SaveChanges();
                 NavigationService.Navigate(new ServicePage());
             }
