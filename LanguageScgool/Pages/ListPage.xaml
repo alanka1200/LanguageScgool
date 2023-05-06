@@ -15,7 +15,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock HorizontalAlignment="Center" Margin="0 -80 0 0" FontSize="40">Список записей</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0 -105 0 0" FontSize="40">Список записей</TextBlock>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" >
@@ -25,7 +25,7 @@
         <ListView x:Name="LvSecv" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"  >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Width="950" Height="165" BorderThickness="2" BorderBrush="Black">
+                    <Border Background="{Binding ColorRed}" Width="950" Height="165" BorderThickness="2" BorderBrush="Black">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="159*"></ColumnDefinition>
@@ -60,7 +60,7 @@
         </ListView>
         <StackPanel Grid.Row="2" Height="40" HorizontalAlignment="Right" Orientation="Horizontal">
 
-            <Button x:Name="BtServList" Click="BtServList_Click" Margin="5 5 10 5 " >Список услуг</Button>
+            <Button Width="120" x:Name="BtServList" Click="BtServList_Click" Margin="5 5 10 5 " >Список услуг</Button>
             <TextBlock x:Name="TbPages" HorizontalAlignment="Right"></TextBlock>
         </StackPanel>
     </Grid>

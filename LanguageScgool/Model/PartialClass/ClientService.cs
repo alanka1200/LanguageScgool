@@ -29,19 +29,23 @@ namespace LanguageScgool.Model
             get
             {
                 var time = StartTime - DateTime.Now;
-                return $"Начало в {StartTime.ToString("F")}.  осталось: {time.ToString(@"hh\:mm")}";
+                return $"Начало в {StartTime.ToString("F")}.  осталось: {time.ToString(@"dd")} дней {time.ToString(@"hh")} ч {time.ToString(@"mm")} мин.";
             }
         }
 
-        //public string ColorRed
-        //{
-        //    get
-        //    {
-        //        if (StartTime - TimeSpan.FromHours(1) < TimeSpan.FromHours())
-        //        {
-
-        //        }
-        //    }
-        //}
+        public string ColorRed
+        {
+            get
+            {
+                if (StartTime - DateTime.Now < TimeSpan.FromHours(1))
+                {
+                    return "red"; 
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
     }
 }

@@ -69,7 +69,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Cost" Type="money" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MainImagePath" Type="varbinary(max)" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ManufacturerID" Type="int" />
         </EntityType>
@@ -521,7 +521,7 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MainImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MainImagePath" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="ManufacturerID" Type="Int32" />
           <NavigationProperty Name="Manufacturer" Relationship="SchoolDBOModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />

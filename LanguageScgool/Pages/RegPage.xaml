@@ -9,6 +9,9 @@
       Title="RegPage">
 
     <Grid>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Margin="0 -105 0 0" FontSize="40">Регистрация</TextBlock>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock>Логин</TextBlock>
@@ -16,15 +19,15 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock>Пароль</TextBlock>
-                <TextBox x:Name="PasswordTb"></TextBox>
+                <PasswordBox x:Name="PasswordTb"></PasswordBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock>Повторить пароль</TextBlock>
-                <TextBox x:Name="TwoPasswordTb"></TextBox>
+                <PasswordBox x:Name="TwoPasswordTb"></PasswordBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="RegBtn" Click="RegBtn_Click">Зарегистрироваться</Button>
-                <Button x:Name="ClearBtn" Click="ClearBtn_Click">Очистить</Button>
+            <StackPanel Margin="50 20 0 0 " Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Width="140" Margin="20 0 0 0" x:Name="RegBtn" Click="RegBtn_Click">Зарегистрироваться</Button>
+                <Button Width="120" Margin="20 0 0 0" x:Name="ClearBtn" Click="ClearBtn_Click">Очистить</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

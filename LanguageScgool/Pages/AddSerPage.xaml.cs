@@ -57,6 +57,7 @@ namespace LanguageScgool.Pages
                 clientService1.StartTime = DateTime.Parse(times);
                 App.db.ClientService.Add(clientService1);
 
+
                 App.db.SaveChanges();
                 NavigationService.Navigate(new ServicePage());
             }
@@ -64,21 +65,6 @@ namespace LanguageScgool.Pages
             {
                 MessageBox.Show("Выбрать дату и клиента");
                 return;
-            }
-        }
-
-        private void TbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
-            {
-                e.Handled = true;
             }
         }
         private void BtCansel_Click(object sender, RoutedEventArgs e)
@@ -97,6 +83,38 @@ namespace LanguageScgool.Pages
         }
 
         private void TbTimes_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbTitle_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbCost_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbTime_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbDiscount_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
             {

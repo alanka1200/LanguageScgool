@@ -9,6 +9,9 @@
       Title="AuthPage">
 
     <Grid>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" Margin="0 -105 0 0" FontSize="40">Авторизация</TextBlock>
+        </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock>Логин</TextBlock>
@@ -16,14 +19,14 @@
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock>Пароль</TextBlock>
-                <TextBox x:Name="PasswordTb"></TextBox>
+                <PasswordBox x:Name="PasswordTb"></PasswordBox>
             </StackPanel>
             <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <CheckBox x:Name="SaveCb" IsChecked="True" Margin="7"></CheckBox>
                 <TextBlock>Запомнить меня</TextBlock>
             </StackPanel>
             <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Margin="20 0 0 0" x:Name="AuthBtn" Click="AuthBtn_Click" Content="Авторизоваться"/>
+                <Button Margin="20 0 0 0" Width="130" x:Name="AuthBtn" Click="AuthBtn_Click" Content="Авторизоваться"/>
                 <Button Width="120" Margin="30 0 0 0" x:Name="RegBtn" Click="RegBtn_Click" Content="Регистрация"/>
             </StackPanel>
         </StackPanel>

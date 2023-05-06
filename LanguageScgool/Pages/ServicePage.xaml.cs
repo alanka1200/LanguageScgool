@@ -22,12 +22,21 @@ namespace LanguageScgool.Pages
     /// </summary>
     public partial class ServicePage : Page
     {
-        
-        IEnumerable<Service> filterProduct = App.db.Service.Where(x => x.IsDelete != true).ToList();
+        IEnumerable<Service> filterProductAll = App.db.Service.Where(x => x.IsDelete != true).ToList();
         public ServicePage()
         {
             InitializeComponent();
-            
+            InitializeComponent();
+            if (App.Admin == true)
+            {
+                BtAddServ.Visibility = Visibility.Visible;
+                BtServList.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BtAddServ.Visibility = Visibility.Collapsed;
+                BtServList.Visibility = Visibility.Collapsed;
+            }
             CbDiscount.SelectedIndex = 0;
             CbSort.SelectedIndex = 0;
             Update();
@@ -41,6 +50,11 @@ namespace LanguageScgool.Pages
         private void DellBt_Click(object sender, RoutedEventArgs e)
         {
             var select = (sender as Button).DataContext as Service;
+            if (App.db.ClientService.FirstOrDefault(x => x.ServiceID == select.ID) != null)
+            {
+                MessageBox.Show("Удаление услуги невозможно, имеются данные");
+                return;
+            }
             select.IsDelete = true;
             App.db.SaveChanges();
         }
@@ -50,6 +64,7 @@ namespace LanguageScgool.Pages
         }
         public void Update()
         {
+            IEnumerable<Service> filterProduct = App.db.Service.Where(x => x.IsDelete != true).ToList();
             if (CbSort.SelectedIndex == 1)
                 filterProduct = filterProduct.OrderBy(x => x.CostDisc);
             else if (CbDiscount.SelectedIndex == 2)
@@ -67,6 +82,7 @@ namespace LanguageScgool.Pages
                     filterProduct = filterProduct.Where(x => x.Discount >= 0.30 && x.Discount < 0.70).ToList();
                 else if (CbDiscount.SelectedIndex == 5)
                     filterProduct = filterProduct.Where(x => x.Discount >= 0.70 && x.Discount < 1).ToList();
+
                   
             }
             if (TbSelect.Text.Length > 0)
@@ -74,14 +90,16 @@ namespace LanguageScgool.Pages
                 filterProduct = filterProduct.Where(x => x.Title.ToLower().StartsWith(TbSelect.Text.ToLower()) || x.Description.ToLower().StartsWith(TbSelect.Text.ToLower()));
             }
             LvSecv.ItemsSource = filterProduct.ToList();
-            }
+            string inpageas = filterProduct.Count().ToString();
+            TbPages.Text = $"{inpageas} из {filterProductAll.Count()}";
+        }
 
         private void CbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Update();
         }
 
-        private void CbDiscount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CbDiscount_SelectionChanged(object sender,  SelectionChangedEventArgs e)
         {
             Update();
         }
@@ -94,6 +112,7 @@ namespace LanguageScgool.Pages
 
         private void BrAddClintInServ_Click(object sender, RoutedEventArgs e)
         {
+
             var select = (sender as Button).DataContext as Service;
             NavigationService.Navigate(new AddSerPage(select));
         }

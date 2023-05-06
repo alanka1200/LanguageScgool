@@ -27,7 +27,7 @@ namespace LanguageScgool.Model
         public string Title { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
-        public string MainImagePath { get; set; }
+        public byte[] MainImagePath { get; set; }
         public bool IsActive { get; set; }
         public Nullable<int> ManufacturerID { get; set; }
     
