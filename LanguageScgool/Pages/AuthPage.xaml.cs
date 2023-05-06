@@ -25,8 +25,7 @@ namespace LanguageScgool.Pages
             InitializeComponent();
             if (Properties.Settings.Default.Login != null)
                 LoginTb.Text = Properties.Settings.Default.Login;
-            if (Properties.Settings.Default.Password != null)
-                PasswordTb.Text = Properties.Settings.Default.Password;
+           
         }
 
         private void RegBtn_Click(object sender, RoutedEventArgs e)
@@ -36,13 +35,13 @@ namespace LanguageScgool.Pages
 
         private void AuthBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTb.Text.Trim().Length <= 0 || PasswordTb.Text.Trim().Length <= 0)
+            if (LoginTb.Text.Trim().Length <= 0 || PasswordTb.Password.Trim().Length <= 0)
             {
                 MessageBox.Show("Заполните все поля!");
             }
             else
             {
-                App.AutorizateUser = App.db.User.ToList().Find(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Text);
+                App.AutorizateUser = App.db.User.ToList().Find(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Password);
                 if (App.AutorizateUser == null)
                 {
                     MessageBox.Show("Такого пользователя не существует");
@@ -52,7 +51,7 @@ namespace LanguageScgool.Pages
                     if (SaveCb.IsChecked == true)
                     {
                         Properties.Settings.Default.Login = LoginTb.Text;
-                        Properties.Settings.Default.Password = PasswordTb.Text;
+                        Properties.Settings.Default.Password = PasswordTb.Password;
                         Properties.Settings.Default.Save();
                     }
                     else
@@ -61,9 +60,15 @@ namespace LanguageScgool.Pages
                         Properties.Settings.Default.Password = null;
                         Properties.Settings.Default.Save();
                     }
+
+                    if (App.AutorizateUser.RoleId == 1)
+                    {
+                        App.Admin = true;
+                    }
                     App.IsAutorizate = true;
                     NavigationService.Navigate(new ServicePage());
                 }
+
             }
         }
     }

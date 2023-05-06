@@ -24,7 +24,13 @@ namespace LanguageScgool
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new ServicePage());
+            MainFrame.NavigationService.Navigate(new AuthPage());
+        }
+
+        private void ExBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            //App.Admin = false; --на будущее
+            this.Close();
         }
     }
 }

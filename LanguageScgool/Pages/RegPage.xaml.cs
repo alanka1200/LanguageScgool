@@ -28,13 +28,13 @@ namespace LanguageScgool.Pages
 
         private void RegBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTb.Text.Trim().Length <= 0 || PasswordTb.Text.Trim().Length <= 0 || TwoPasswordTb.Text.Trim().Length <= 0)
+            if (LoginTb.Text.Trim().Length <= 0 || PasswordTb.Password.Trim().Length <= 0 || TwoPasswordTb.Password.Trim().Length <= 0)
             {
                 MessageBox.Show("Заполните все поля!");
             }
             else
             {
-                if (PasswordTb.Text.Trim().Length != TwoPasswordTb.Text.Trim().Length)
+                if (PasswordTb.Password.Trim().Length != TwoPasswordTb.Password.Trim().Length)
                 {
                     MessageBox.Show("Пароли не совпадают!");
                 }
@@ -51,11 +51,11 @@ namespace LanguageScgool.Pages
                         App.db.User.Add(new User()
                         {
                             Login = LoginTb.Text.Trim(),
-                            Password = PasswordTb.Text.Trim(),
+                            Password = PasswordTb.Password.Trim(),
                             RoleId = 2
                         });
                         App.db.SaveChanges();
-                        MessageBox.Show("Регистрауия прошла успешно!");
+                        MessageBox.Show("Регистрация прошла успешно!");
                         NavigationService.GoBack();
                     }
                 }

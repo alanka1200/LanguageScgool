@@ -66,21 +66,6 @@ namespace LanguageScgool.Pages
                 return;
             }
         }
-
-        private void TbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
-            {
-                e.Handled = true;
-            }
-        }
-        private void TbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
-            {
-                e.Handled = true;
-            }
-        }
         private void BtCansel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ServicePage());
@@ -97,6 +82,38 @@ namespace LanguageScgool.Pages
         }
 
         private void TbTimes_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbTitle_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbCost_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbTime_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbDiscount_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, @"[0-9:]") == false)
             {

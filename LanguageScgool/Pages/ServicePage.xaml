@@ -15,7 +15,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock HorizontalAlignment="Center" Margin="0 -80 0 0" FontSize="40">Список Услуг</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0 -105 0 0" FontSize="40">Список Услуг</TextBlock>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" >
@@ -62,9 +62,9 @@
                                 </StackPanel>
                                 <TextBlock Grid.Row="2" Text="{Binding DiscountPart}" FontSize="18" Visibility="{Binding CostVisabiliti}"></TextBlock>
                                 <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
-                                    <Button x:Name="BrAddClintInServ" Height="34" FontSize="17" Click="BrAddClintInServ_Click" Visibility="{Binding ADminMod}">Записаться на услугу</Button>
-                                    <Button Click="EditBt_Click" FontSize="17" x:Name="EditBt" Visibility="{Binding ADminMod}" Width="150" Margin="10 0 0 0" HorizontalAlignment="Left">Редактировать</Button>
-                                    <Button Click="DellBt_Click" FontSize="17" x:Name="DellBt" Visibility="{Binding ADminMod}"  Width="100" Margin="10 0 0 0" HorizontalAlignment="Left">Удалить</Button>
+                                    <Button x:Name="BrAddClintInServ"  FontSize="17" Click="BrAddClintInServ_Click" >Записаться на услугу</Button>
+                                    <Button Click="EditBt_Click" FontSize="17" x:Name="EditBt" Visibility="{Binding Adminka}" Width="150" Margin="10 0 0 0" HorizontalAlignment="Left">Редактировать</Button>
+                                    <Button Click="DellBt_Click" FontSize="17" x:Name="DellBt"  Visibility="{Binding Adminka}" Width="100" Margin="10 0 0 0" HorizontalAlignment="Left">Удалить</Button>
                                 </StackPanel>
                             </Grid>
                         </Grid>
@@ -73,8 +73,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2" Height="40" HorizontalAlignment="Right" Orientation="Horizontal">
-            
-            <Button x:Name="BtServList" Click="BtServList_Click" Margin="5 5 10 5 " >Список записей на услугу</Button>
+            <Button Width="140" x:Name="BtAddServ" Click="BtAddServ_Click" Margin="5 5 10 5 " >Добавить услугу</Button>
+            <Button Width="140" x:Name="BtServList" Click="BtServList_Click" Margin="5 5 10 5 " >Список записей на услугу</Button>
             <TextBlock x:Name="TbPages" HorizontalAlignment="Right"></TextBlock>
         </StackPanel>
     </Grid>

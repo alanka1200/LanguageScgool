@@ -17,5 +17,6 @@ namespace LanguageScgool
         public static SchoolDBOEntities db = new SchoolDBOEntities();
         public static bool IsAutorizate;
         public static User AutorizateUser;
+        public static bool Admin = false;
     }
 }

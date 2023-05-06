@@ -61,13 +61,22 @@ namespace LanguageScgool.Pages
         {
 
             string error = "";
-            if (TbCost.Text.Length > 0 && TbDiscount.Text.Length > 0 && TbTime.Text.Length > 0 && TbTitle.Text.Length > 0 && ImMainImage != null)
+            if (TbCost.Text.Length > 0 && TbDiscount.Text.Length > 0 && TbTime.Text.Length > 0 && TbTitle.Text.Length > 0 && ImMainImage != null && int.Parse(TbTime.Text) <240)
             {
                 contextService.Discount /= 100;
                 contextService.DurationInSeconds *= 60;
-                if (contextService.ID != 0)
+                if (contextService.ID == 0)
                 {
-                    App.db.Service.Add(contextService);
+                    if (App.db.Service.FirstOrDefault(x => x.Title == contextService.Title) == null)
+                    {
+                        App.db.Service.Add(contextService);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Услуга с тамким назваием уже существует");
+                        return;
+                        
+                    }
                 }
                 App.db.SaveChanges();
                 NavigationService.Navigate(new ServicePage());
@@ -82,7 +91,8 @@ namespace LanguageScgool.Pages
                 {
                     error += "Заполните скидку услуги";
                 }
-                if (TbTime.Text.Length == 0 && int.Parse(TbTime.Text) > 14400)
+
+                if (TbTime.Text.Length == 0 || int.Parse(TbTime.Text) > 240) 
                 {
                     error += "Заполните вреия услуги в секундах";
                 }
@@ -102,13 +112,7 @@ namespace LanguageScgool.Pages
             }
         }
 
-        private void TbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
-            {
-                e.Handled = true;
-            }
-        }
+        
         private void TbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
@@ -170,12 +174,32 @@ namespace LanguageScgool.Pages
         private void BrDellDopPhoto_Click(object sender, RoutedEventArgs e)
         {
             var Select = LvDopPhoto.SelectedItem as ServicePhoto;
+            if (Select == null)
+            {
+                MessageBox.Show("Выберите изображение");
+                return;
+            }
             App.db.ServicePhoto.Remove(Select);
             App.db.SaveChanges();
             LvDopPhoto.ItemsSource = App.db.ServicePhoto.ToList();
         }
 
         private void TbDiscount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9,]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+        private void TbCost_OnPreviewTextInputTbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9,]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbTime_OnPreviewTextInputTbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, @"[0-9,]") == false)
             {
